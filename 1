@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+	int i, n,I,min,t,j;
+	int *a;
+	scanf("%d",&n);
+	if (n <= 1)
+		printf("Данные введены некорректно");
+	else {
+	    min=INT_MAX;
+		a = (int *)malloc(n * sizeof(int));
+		for (i=0; i<n; i++) 
+			scanf("%d",&a[i]);
+		for(i=0;i<n;i++) {
+		    for(j=i;j<n;j++) 
+		    if(a[j]<min) {
+		        I=j;
+		        min=a[j];
+		    }
+		    t=a[i];
+		    a[i]=a[I];
+		    a[I]=t;
+		    min=INT_MAX;
+		}
+		for (i=0; i < n; i++)
+			printf("%d ",a[i]);
+		free(a);
+	}
+	return 0;
+}
